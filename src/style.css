@@ -52,6 +52,17 @@ main{
     border: none;
     font-weight: bold;
 }
+
+#iniciarSesion{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background: #F5AE79;
+    border-radius: 40px;
+    height: 40px;
+    width: 30%;
+    border: none;
+    font-weight: bold;
+}
 #google{
     margin-top: 10px;
     margin-bottom: 30px;
