@@ -36,8 +36,8 @@ const rutas = {
 };
 const rootInicio = document.getElementById('root');
 
-/* const pathname = window.location.pathname;
-rootInicio.innerHTML = rutas[pathname]; */
+const pathname = window.location.pathname;
+rootInicio.innerHTML = rutas[pathname];
 
 const cambioRuta = (hash) => {
   if (hash === '#iniciarSesion') {
@@ -52,8 +52,14 @@ window.addEventListener('hashchange', () => {
   rootInicio.innerHTML = linkContenido[hash];
   cambioRuta(hash);
 });
+// window.addEventListener("load", () => {
+//   cargarVista();
+// });
 
 window.onpopstate = () => {
   const nuevaPathname = window.location.pathname;
   rootInicio.innerHTML = rutas[nuevaPathname];
 };
+// function cargarVista() {
+
+// }
