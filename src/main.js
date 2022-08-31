@@ -1,9 +1,12 @@
 // Este es el punto de entrada de tu aplicacion
 
-/* import { myFunction } from './lib/index.js';
+import { registrarUsuario } from './login.js';
 
-myFunction();
- */
+const buttonRegistrate = document.getElementById('registrate');
+buttonRegistrate.addEventListener('click', () => {
+registrarUsuario('user@example.com', 'password').then(() => {
+})
+});
 
 const resgContenido = `<label >Nombre y Apellido</label> <br>
 <input id type="text"> <br>
@@ -31,14 +34,11 @@ const linkContenido = {
 };
 
 const rutas = {
-  '/iniciarSesion': iniciarContenido,
-  '/': resgContenido,
+  '/iniciarSesion': iniciarContenido, '/': resgContenido,
 };
 const rootInicio = document.getElementById('root');
-
 const pathname = window.location.pathname;
 rootInicio.innerHTML = rutas[pathname];
-
 const cambioRuta = (hash) => {
   if (hash === '#iniciarSesion') {
     window.history.replaceState({}, 'iniciarSesion', '/iniciarSesion');
