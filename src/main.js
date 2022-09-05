@@ -1,5 +1,5 @@
-import resgContenido from './lib/registro.js';
-import iniciarContenido from './lib/iniciarSesion.js';
+import { resgContenido } from './lib/registro.js';
+import { iniciarContenido } from './lib/iniciarSesion.js';
 import { registro } from './lib/auth.js';
 
 const linkContenido = {
@@ -36,12 +36,12 @@ window.onpopstate = () => {
   rootInicio.innerHTML = rutas[nuevaPathname];
 };
 
-const buttonRegistrate = document.getElementById('registro');
-buttonRegistrate.addEventListener('submit', (e) => {
-  e.preventDefault();
-  console.log('cualquier cosa');
-  const email = document.querySelector('#correo').value;
-  const contraseña = document.querySelector('#contraseña').value;
+// const buttonRegistrate = document.getElementById('registro');
+// buttonRegistrate.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   console.log('cualquier cosa');
+//   const email = document.querySelector('#correo').value;
+//   const contraseña = document.querySelector('#contraseña').value;
 
-  registro(email, contraseña);
-});
+//   registro(email, contraseña);
+// });
