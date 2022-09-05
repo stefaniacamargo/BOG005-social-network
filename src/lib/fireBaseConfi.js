@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js';
-import { getAuth } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA1ZvCmPukgBPLDtlPc58Rvhm1o-_-xfDA',
@@ -13,3 +13,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 console.log('app: ', app);
 export const auth = getAuth(app);
+
+export const usuarioCreado = createUserWithEmailAndPassword;
+export const usuarioExistente = signInWithEmailAndPassword;
