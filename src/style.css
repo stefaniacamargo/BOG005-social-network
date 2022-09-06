@@ -111,6 +111,7 @@
 }
 .muro{
     text-align: center;
+   
 }
 .parrafo{
     margin-top: 50px;
@@ -132,6 +133,13 @@
 .publicacion{
 
     width: 60%;
+    height: 120px;
     border: 1px solid red;
-    
+    background: #E6EDEF url(img/modificar.png) no-repeat;
+    background-size: 5%;
+    margin-top: 70px;
+    border-radius: 20px;
+    font-size: 20px;
+    margin-left: 150px;
+
 }
