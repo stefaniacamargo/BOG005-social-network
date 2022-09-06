@@ -1,15 +1,17 @@
-import { resgContenido } from './lib/registro.js';
-import { iniciarContenido } from './lib/iniciarSesion.js';
-import { registro } from './lib/auth.js';
+import { resgContenido, vistaRegistro } from './lib/registro.js';
+import { iniciarContenido, vistaIniciar } from './lib/iniciarSesion.js';
+import { muroContenido } from './lib/muro.js';
 
 const linkContenido = {
   '#iniciarSesion': iniciarContenido,
   '#registrate': resgContenido,
+  '#muro': muroContenido,
 };
 
 const rutas = {
   '/iniciarSesion': iniciarContenido,
   '/': resgContenido,
+  '/muro': muroContenido,
 };
 const rootInicio = document.getElementById('root');
 
@@ -20,8 +22,12 @@ rootInicio.innerHTML = rutas[pathname];
 const cambioRuta = (hash) => {
   if (hash === '#iniciarSesion') {
     window.history.replaceState({}, 'iniciarSesion', '/iniciarSesion');
+    vistaIniciar();
   } else if (hash === '#registrate') {
     window.history.replaceState({}, 'registrate', '/');
+    vistaRegistro();
+  } else if (hash === '#muro') {
+    window.history.replaceState({}, 'muro', '/muro');
   }
 };
 
@@ -35,13 +41,3 @@ window.onpopstate = () => {
   const nuevaPathname = window.location.pathname;
   rootInicio.innerHTML = rutas[nuevaPathname];
 };
-
-// const buttonRegistrate = document.getElementById('registro');
-// buttonRegistrate.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   console.log('cualquier cosa');
-//   const email = document.querySelector('#correo').value;
-//   const contraseña = document.querySelector('#contraseña').value;
-
-//   registro(email, contraseña);
-// });
