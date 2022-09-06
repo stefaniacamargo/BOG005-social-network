@@ -112,9 +112,10 @@
 .muro{
     text-align: center;
     display: flex;
-   flex-wrap: wrap;
-   align-items: flex-start;
-   justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
 }
 .parrafo{
     margin-top: 50px;
@@ -134,7 +135,6 @@
     padding-left: 30px;
 }
 .publicacion{
-
     width: 60%;
     height: 120px;
     border: 1px solid red;
@@ -144,6 +144,5 @@
     margin-top: 70px;
     border-radius: 20px;
     font-size: 20px;
-  
 
 }
