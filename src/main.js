@@ -15,15 +15,17 @@ const rutas = {
 };
 const rootInicio = document.getElementById('root');
 
-const pathname = window.location.pathname;
-console.log(pathname);
-rootInicio.innerHTML = rutas[pathname];
-
 const cambioRuta = (hash) => {
+  console.log(hash);
+  if (hash === '') {
+    rootInicio.innerHTML = linkContenido['#registrate'];
+  } else {
+    rootInicio.innerHTML = linkContenido[hash];
+  }
   if (hash === '#iniciarSesion') {
     window.history.replaceState({}, 'iniciarSesion', '/iniciarSesion');
     vistaIniciar();
-  } else if (hash === '#registrate') {
+  } else if (hash === '#registrate' || hash === '') {
     window.history.replaceState({}, 'registrate', '/');
     vistaRegistro();
   } else if (hash === '#muro') {
@@ -32,9 +34,11 @@ const cambioRuta = (hash) => {
 };
 
 window.addEventListener('hashchange', () => {
-  const hash = window.location.hash;
-  rootInicio.innerHTML = linkContenido[hash];
-  cambioRuta(hash);
+  cambioRuta(window.location.hash);
+});
+
+window.addEventListener('load', () => {
+  cambioRuta(window.location.hash);
 });
 
 window.onpopstate = () => {

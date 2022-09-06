@@ -111,6 +111,10 @@
 }
 .muro{
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
    
 }
 .parrafo{
@@ -131,15 +135,13 @@
     padding-left: 30px;
 }
 .publicacion{
-
     width: 60%;
     height: 120px;
     border: 1px solid red;
-    background: #E6EDEF url(img/modificar.png) no-repeat;
+    background: #E6EDEF url(img/modificar.png/) no-repeat;
     background-size: 5%;
+    background-position:right 30px bottom 10px;
     margin-top: 70px;
     border-radius: 20px;
     font-size: 20px;
-    margin-left: 150px;
-
 }
