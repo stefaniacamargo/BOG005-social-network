@@ -1,6 +1,6 @@
 import { resgContenido, vistaRegistro } from './lib/registro.js';
 import { iniciarContenido, vistaIniciar } from './lib/iniciarSesion.js';
-import { muroContenido } from './lib/muro.js';
+import { cerrarSesion, muroContenido } from './lib/muro.js';
 
 const linkContenido = {
   '#iniciarSesion': iniciarContenido,
@@ -30,6 +30,7 @@ const cambioRuta = (hash) => {
     vistaRegistro();
   } else if (hash === '#muro') {
     window.history.replaceState({}, 'muro', '/muro');
+    cerrarSesion();
   }
 };
 

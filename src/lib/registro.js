@@ -1,4 +1,4 @@
-import { registro } from './auth.js';
+import { registro, google } from './auth.js';
 
 export const resgContenido = `<section class="contenedor">
 <section class="logoInicial">
@@ -29,5 +29,9 @@ export const vistaRegistro = () => {
     const email = document.querySelector('#correo').value;
     const contraseña = document.querySelector('#contraseña').value;
     registro(email, contraseña);
+  });
+  const buttonGoogle = document.getElementById('google');
+  buttonGoogle.addEventListener('click', () => {
+    google();
   });
 };

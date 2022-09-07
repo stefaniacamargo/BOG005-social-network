@@ -1,8 +1,10 @@
+import { salir } from "./auth.js";
+
 export const muroContenido = `<section class="contenedor-muro">
 <header class="logoInicial-muro">
   <div><img class="logo-muro" src="img/Logo.png" alt="logo" /></div>
   <div><img class="titulo-muro" src="img/tituloprincipal.PNG" alt="music book" /></div>
-  <div><img class="logout-muro" src="img/logout.png" alt="Salir"></div>
+  <div><img id="cerrar" class="logout-muro" src="img/logout.png" alt="Salir"></div>
 </header>
 <section class="muro">
   <article class="parrafo">
@@ -14,5 +16,11 @@ export const muroContenido = `<section class="contenedor-muro">
 
   </article>
 </section>
-
 </section>`;
+
+export const cerrarSesion = () => {
+  const buttonCerrar = document.getElementById("cerrar");
+  buttonCerrar.addEventListener("click", () => {
+    salir();
+  });
+};
