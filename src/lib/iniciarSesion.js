@@ -3,8 +3,8 @@ import { iniciarSesion2, google } from './auth.js';
 export const iniciarContenido = `<section class="contenedor">
 <section class="logoInicial">
 <div>
-<img class="titulo" src="img/tituloprincipal.PNG" alt="music book" />
-<img class="logo" src="img/Logo.png" alt="logo" />
+<img class="titulo" src="./img/tituloprincipal.PNG" alt="music book" />
+<img class="logo" src="./img/Logo.png" alt="logo" />
 </div>
 </section>
 <section class="registro">
@@ -15,7 +15,7 @@ export const iniciarContenido = `<section class="contenedor">
 <input id="loginContraseña" type="password"> <br>
 <button type="submit" id="iniciarSesion">Iniciar Sesión</button> <br>
 </form>
-<img id="google" class="logo" src="img/botongoogle.png" alt="continua con google">
+<img id="google" class="logo" src="./img/botongoogle.png" alt="continua con google">
 <p>¿No tienes una cuenta?</p>
 <p><a href="#registrate">Registrate</a></p>
 </section>

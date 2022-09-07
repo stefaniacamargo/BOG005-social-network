@@ -2,9 +2,9 @@ import { salir } from './auth.js';
 
 export const muroContenido = `<section class="contenedor-muro">
 <header class="logoInicial-muro">
-  <div><img class="logo-muro" src="img/Logo.png" alt="logo" /></div>
-  <div><img class="titulo-muro" src="img/tituloprincipal.PNG" alt="music book" /></div>
-  <div><img id="cerrar" class="logout-muro" src="img/logout2.png" alt="Salir"></div>
+  <div><img class="logo-muro" src="./img/Logo.png" alt="logo" /></div>
+  <div><img class="titulo-muro" src="./img/tituloprincipal.PNG" alt="music book" /></div>
+  <div><img id="cerrar" class="logout-muro" src="./img/logout2.png" alt="Salir"></div>
 </header>
 <section class="muro">
   <article class="parrafo">
