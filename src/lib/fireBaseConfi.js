@@ -1,5 +1,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
+import {
+  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+} from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA1ZvCmPukgBPLDtlPc58Rvhm1o-_-xfDA',
@@ -16,3 +19,11 @@ export const auth = getAuth(app);
 
 export const usuarioCreado = createUserWithEmailAndPassword;
 export const usuarioExistente = signInWithEmailAndPassword;
+
+export const provider = new GoogleAuthProvider();
+export const providerGoogle = GoogleAuthProvider;
+export const popup = signInWithPopup;
+
+export const logout = signOut;
+
+export const onAuthState = onAuthStateChanged;
