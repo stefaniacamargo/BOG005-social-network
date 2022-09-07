@@ -25,5 +25,4 @@ export const providerGoogle = GoogleAuthProvider;
 export const popup = signInWithPopup;
 
 export const logout = signOut;
-
 export const onAuthState = onAuthStateChanged;

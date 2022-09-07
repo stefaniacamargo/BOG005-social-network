@@ -1,13 +1,7 @@
 import {
-  auth,
-  usuarioCreado,
-  usuarioExistente,
-  provider,
-  providerGoogle,
-  popup,
-  logout,
-  onAuthState,
-} from "./fireBaseConfi.js";
+  auth, usuarioCreado, usuarioExistente, provider,
+  providerGoogle, popup, logout, onAuthState,
+} from './fireBaseConfi.js';
 
 export function registro(email, password) {
   usuarioCreado(auth, email, password)
@@ -24,12 +18,13 @@ export function iniciarSesion2(email, password) {
   usuarioExistente(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-     console.log(user); // redireccionar a la otra pagina
+      console.log(user); // redireccionar a la otra pagina
     })
     .catch((error) => {
       console.log(error.message);
     });
 }
+
 export function google() {
   popup(auth, provider)
     .then((result) => {
@@ -46,13 +41,13 @@ export function google() {
       console.log(providerGoogle.credentialFromError(error));
     });
 }
+
 export function salir() {
   logout(auth).then(() => {
   }).catch((error) => {
     console.log(error.message);
   });
 }
-
 
 onAuthState(auth, (user) => {
   if (user) {

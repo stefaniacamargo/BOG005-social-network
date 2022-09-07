@@ -1,4 +1,4 @@
-import { salir } from "./auth.js";
+import { salir } from './auth.js';
 
 export const muroContenido = `<section class="contenedor-muro">
 <header class="logoInicial-muro">
