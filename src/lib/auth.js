@@ -2,6 +2,8 @@ import {
   auth, usuarioCreado, usuarioExistente, provider,
   providerGoogle, popup, logout, onAuthState,
 } from './fireBaseConfi.js';
+// eslint-disable-next-line import/no-cycle
+import { cambioRuta } from '../main.js';
 
 export function registro(email, password) {
   usuarioCreado(auth, email, password)
@@ -47,19 +49,20 @@ export function google() {
 
 export function salir() {
   logout(auth).then(() => {
-    window.location.href = '/';
+    // window.location.href = '/';
+    cambioRuta('');
   }).catch((error) => {
     console.log(error.message);
   });
 }
 
-/* onAuthState(auth, (user) => {
-  if (user) {
-    const uid = user.uid;
-    window.location.href = '#muro';
-    console.log(uid, 'sesion iniciada');
-  } else {
-    console.log('sesion no iniciada');
-    window.location.href = '#iniciarSesion';
-  }
-}); */
+// onAuthState(auth, (user) => {
+//   if (user) {
+//     const uid = user.uid;
+//     window.location.href = '#muro';
+//     console.log(uid, 'sesion iniciada');
+//   } else {
+//     console.log('sesion no iniciada');
+//     window.location.href = '#iniciarSesion';
+//   }
+// });

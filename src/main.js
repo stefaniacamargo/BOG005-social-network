@@ -15,7 +15,7 @@ const rutas = {
 };
 const rootInicio = document.getElementById('root');
 
-const cambioRuta = (hash) => {
+export const cambioRuta = (hash) => {
   console.log(hash);
   if (hash === '') {
     rootInicio.innerHTML = linkContenido['#registrate'];
