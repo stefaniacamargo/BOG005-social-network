@@ -41,11 +41,14 @@ html, body, main {
     margin-top: 10px;
     margin-bottom: 30px;
     background: #7CBCDB;
-    border-radius: 40px;
+    border-radius: 15px;
     height: 40px;
     width: 45%;
     border: none;
     text-align: center;
+}
+.registro p{
+    font-size: 17px;
 }
 #registrate{
     margin-top: 35px;
@@ -154,4 +157,62 @@ html, body, main {
 }
 .modificar{
     right: 30px;
+}
+@media only screen and (min-width : 850px) and (max-width : 1200px){
+.registro input {
+    width: 55%;
+}
+#iniciarSesion {
+    width: 40%;
+}
+#registrate {
+    width: 40%;
+}
+#google {
+    width: 45%;
+}
+}
+@media only screen and (min-width : 650px) and (max-width : 851px){
+.registro{
+    font-size: 18px;
+}
+.registro input {
+    width: 65%;
+}
+.registro p{
+    font-size: 15px;
+}
+#iniciarSesion {
+    width: 45%;
+    font-size: 18px;
+}
+#registrate {
+    width: 45%;
+    font-size: 18px;
+}
+#google {
+    width: 50%;
+}
+}
+@media only screen and (max-width : 651px){
+.logoInicial {
+    width: 100%;
+    background: #E6EDEF;
+    text-align: center;
+    height: auto;
+    display: flex;
+}
+.logoInicial > div{
+    width: 90%;
+    display: flex;
+}
+.logoInicial > div > figure:first-child{
+    order: 2;
+}
+.titulo {
+    width: 50%;
+}
+.logo {
+    width: 50%;
+}
 }
