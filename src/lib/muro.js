@@ -12,7 +12,7 @@ export const muroContenido = `<section class="contenedor-muro">
     Recomienda y da consejos a las personas que estan aprendiendo sobre musica.</p>
   </article>
   <article id="usuario" class="usuario">
-    <img src="./img/usuario.png" alt="Usuario">
+    <img src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/usuario.png" alt="Usuario">
     <p>Sofia Martinez</p>
   </article>
   <input class="comentario" type="text" placeholder="Escribe aqui...">
