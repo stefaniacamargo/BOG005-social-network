@@ -7,6 +7,7 @@ export function registro(email, password) {
   usuarioCreado(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
     })
     .catch((error) => {
@@ -18,6 +19,7 @@ export function iniciarSesion2(email, password) {
   usuarioExistente(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
     })
     .catch((error) => {
@@ -30,6 +32,7 @@ export function google() {
     .then((result) => {
       const credential = providerGoogle.credentialFromResult(result);
       const token = credential.accessToken;
+      window.location.href = '#muro';
       console.log(token);
       const user = result.user.displayName;
       console.log(user);
@@ -44,12 +47,13 @@ export function google() {
 
 export function salir() {
   logout(auth).then(() => {
+    window.location.href = '/';
   }).catch((error) => {
     console.log(error.message);
   });
 }
 
-onAuthState(auth, (user) => {
+/* onAuthState(auth, (user) => {
   if (user) {
     const uid = user.uid;
     window.location.href = '#muro';
@@ -58,4 +62,4 @@ onAuthState(auth, (user) => {
     console.log('sesion no iniciada');
     window.location.href = '#iniciarSesion';
   }
-});
+}); */
