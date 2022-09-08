@@ -3,8 +3,8 @@ import { iniciarSesion2, google } from './auth.js';
 export const iniciarContenido = `<section class="contenedor">
 <section class="logoInicial">
 <div>
-<img class="titulo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/tituloprincipal.PNG" alt="music book" />
-<img class="logo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/Logo.png" alt="logo" />
+<figure><img class="titulo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/tituloprincipal.PNG" alt="music book" /></figure>
+<figure><img class="logo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/Logo.png" alt="logo" /></figure>
 </div>
 </section>
 <section class="registro">
