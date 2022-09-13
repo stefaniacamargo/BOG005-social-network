@@ -3,6 +3,8 @@ import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js";
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyA1ZvCmPukgBPLDtlPc58Rvhm1o-_-xfDA',
@@ -26,3 +28,8 @@ export const popup = signInWithPopup;
 
 export const logout = signOut;
 export const onAuthState = onAuthStateChanged;
+
+export const db = getFirestore(app);
+export const coleccion = collection;
+export const agregar = addDoc;
+export const obtener = getDocs;
