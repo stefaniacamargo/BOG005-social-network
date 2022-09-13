@@ -11,5 +11,12 @@ export async function infComentario(comentario) {
   }
 }
 export async function obtenerComentario() {
-  obtener(coleccion(db, 'comentario'));
+  try {
+    const querySnapshot = await obtener(coleccion(db, 'comentario'));
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
+    });
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
 }

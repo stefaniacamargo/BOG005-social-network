@@ -29,17 +29,6 @@ export const muroContenido = `<section class="contenedor-muro">
 </section>
 </section>`;
 
-export const prueba = () => {
-  const prueba1 = document.getElementById('prueba');
-  prueba1.addEventListener('click', async () => {
-    const querySnapshot = await obtenerComentario();
-    // querySnapshot.forEach((doc) => {
-    // console.log(`${doc.id} => ${doc.data()}`);
-    // });
-    console.log(querySnapshot);
-  });
-};
-
 export const cerrarSesion = () => {
   const buttonCerrar = document.getElementById('cerrar');
   buttonCerrar.addEventListener('click', () => {
@@ -56,5 +45,8 @@ export const publicar = () => {
     infComentario(comentario);
     document.getElementById('comentario').value = '';
   });
-
+  const pruebaboton = document.getElementById('prueba');
+  pruebaboton.addEventListener('click', () => {
+    obtenerComentario();
+  });
 };

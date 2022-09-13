@@ -1,6 +1,9 @@
+// eslint-disable-next-line import/no-cycle
 import { resgContenido, vistaRegistro } from './lib/registro.js';
+// eslint-disable-next-line import/no-cycle
 import { iniciarContenido, vistaIniciar } from './lib/iniciarSesion.js';
-import { cerrarSesion, muroContenido, prueba, publicar } from './lib/muro.js';
+// eslint-disable-next-line import/no-cycle
+import { cerrarSesion, muroContenido, publicar } from './lib/muro.js';
 
 const linkContenido = {
   '#iniciarSesion': iniciarContenido,
@@ -30,7 +33,6 @@ export const cambioRuta = (hash) => {
     vistaRegistro();
   } else if (hash === '#muro') {
     window.history.replaceState({}, 'muro', '/muro');
-    prueba();
     cerrarSesion();
     publicar();
   }
