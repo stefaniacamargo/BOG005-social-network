@@ -1,12 +1,12 @@
 import {
-  auth, usuarioCreado, usuarioExistente, provider,
-  providerGoogle, popup, logout, onAuthState,
+  auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
 } from './fireBaseConfi.js';
 // eslint-disable-next-line import/no-cycle
 import { cambioRuta } from '../main.js';
 
 export function registro(email, password) {
-  usuarioCreado(auth, email, password)
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.href = '#muro';
@@ -18,7 +18,7 @@ export function registro(email, password) {
 }
 
 export function iniciarSesion2(email, password) {
-  usuarioExistente(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.href = '#muro';
@@ -30,9 +30,9 @@ export function iniciarSesion2(email, password) {
 }
 
 export function google() {
-  popup(auth, provider)
+  signInWithPopup(auth, provider)
     .then((result) => {
-      const credential = providerGoogle.credentialFromResult(result);
+      const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       window.location.href = '#muro';
       console.log(token);
@@ -43,12 +43,12 @@ export function google() {
       console.log(error.code);
       console.log(error.message);
       console.log(error.customData.email);
-      console.log(providerGoogle.credentialFromError(error));
+      console.log(GoogleAuthProvider.credentialFromError(error));
     });
 }
 
 export function salir() {
-  logout(auth).then(() => {
+  signOut(auth).then(() => {
     // window.location.href = '/';
     cambioRuta('');
   }).catch((error) => {
@@ -56,7 +56,7 @@ export function salir() {
   });
 }
 
-// onAuthState(auth, (user) => {
+// onAuthStateChanged(auth, (user) => {
 //   if (user) {
 //     const uid = user.uid;
 //     window.location.href = '#muro';

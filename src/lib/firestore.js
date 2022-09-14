@@ -1,8 +1,13 @@
-import { coleccion, agregar, db, obtener } from './fireBaseConfi.js';
+import {
+  collection, addDoc, getDocs, db, doc, onSnapshot,
+} from './fireBaseConfi.js';
+
+// eslint-disable-next-line import/no-mutable-exports
+// export let dato = [];
 
 export async function infComentario(comentario) {
   try {
-    const docRef = await agregar(coleccion(db, 'comentario'), {
+    const docRef = await addDoc(collection(db, 'comentario'), {
       comentario,
     });
     console.log('Document written with ID: ', docRef.id);
@@ -10,13 +15,5 @@ export async function infComentario(comentario) {
     console.error('Error adding document: ', e);
   }
 }
-export async function obtenerComentario() {
-  try {
-    const querySnapshot = await obtener(coleccion(db, 'comentario'));
-    querySnapshot.forEach((doc) => {
-      console.log(doc.data());
-    });
-  } catch (e) {
-    console.error('Error adding document: ', e);
-  }
-}
+
+export const obtenerComentario = () => getDocs(collection(db, 'comentario'));

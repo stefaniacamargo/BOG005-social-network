@@ -17,9 +17,8 @@ export const muroContenido = `<section class="contenedor-muro">
     <p>Sofia Martinez</p>
   </article>
   <input id="comentario" class="comentario" type="text" placeholder="Escribe aqui...">
-  <button id="botonPublicar">Publicar</button>
-  <button id="prueba">Prueba</button>
-  <article class="publicacion">
+  <span class="bPublicar"><button class="boton" id="botonPublicar">Publicar</button></span>
+  <article id="publicacion" class="publicacion">
     <p>Me gusto la nueva cancion de Shakira</p>
     <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
     <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
@@ -45,8 +44,26 @@ export const publicar = () => {
     infComentario(comentario);
     document.getElementById('comentario').value = '';
   });
-  const pruebaboton = document.getElementById('prueba');
-  pruebaboton.addEventListener('click', () => {
-    obtenerComentario();
+};
+let texto = '';
+const pintar = (dato) => {
+  for (let i = 0; i < dato.lenght; i++) {
+    texto += `<article id="publicacion" class="publicacion">
+    <p>${dato[i]}</p>
+    <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
+    <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
+    <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
+    </article>`;
+  }
+};
+let publicacion = '';
+export const obtenerPost = async () => {
+  publicacion = document.getElementById('publicacion');
+  const snapshot = await obtenerComentario();
+  snapshot.forEach((doc) => {
+    const dato = doc.data().comentario;
+    console.log(dato);
+    pintar(dato);
+    // publicacion.innerHTML = texto;
   });
 };

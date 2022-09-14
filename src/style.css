@@ -129,6 +129,21 @@ html, body, main {
     text-align: left ;
     padding-left: 30px;
 }
+.bPublicar{
+    display: block;
+    text-align: right;
+    width: 55%;
+    margin-top: 10px;
+}
+.boton{
+    width: 17%;
+    height: 30px;
+    background-color: #0098c8;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
 .publicacion{
     width: 60%;
     height: 120px;
