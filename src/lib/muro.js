@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-cycle
 import { salir } from './auth.js';
-import { infComentario, obtenerComentario } from './firestore.js';
+import {
+  infComentario, obtenerComentario, borrarComentario,
+} from './firestore.js';
 
 export const muroContenido = `<section class="contenedor-muro">
 <header class="logoInicial-muro">
@@ -54,11 +56,21 @@ export const obtenerPost = async () => {
       <div>
       <p>${dato.comentario}</p>
       <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
-      <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
+      <img class="eliminar" data-id="${doc.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
       <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
       </div>
       </article>`;
     });
     contenedor.innerHTML = texto;
+    const btnEliminar = document.querySelectorAll('.eliminar');
+    btnEliminar.forEach((btn) => {
+      // extraer las propiedades de un objeto
+      btn.addEventListener('click', ({ target: { dataset } }) => {
+        const confirmar = confirm('¿Estas seguro que deseas eliminar la publicación?');
+        if (confirmar === true) {
+          borrarComentario(dataset.id);
+        }
+      });
+    });
   });
 };
