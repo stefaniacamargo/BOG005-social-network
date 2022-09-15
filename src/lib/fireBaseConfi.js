@@ -1,10 +1,13 @@
+// eslint-disable-next-line import/no-unresolved
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js';
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 import {
-  getFirestore, collection, addDoc, getDocs, doc, onSnapshot
+  getFirestore, collection, addDoc, onSnapshot, orderBy, Timestamp, query,
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -25,7 +28,7 @@ export const provider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 
 export {
-  collection, addDoc, getDocs, doc, onSnapshot,
+  collection, addDoc, onSnapshot, orderBy, Timestamp, query,
 };
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,

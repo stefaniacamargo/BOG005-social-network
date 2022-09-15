@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { salir } from './auth.js';
 import { infComentario, obtenerComentario } from './firestore.js';
 
@@ -7,7 +8,7 @@ export const muroContenido = `<section class="contenedor-muro">
   <div><img class="titulo-muro" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/tituloprincipal.PNG" alt="music book" /></div>
   <div><img id="cerrar" class="logout-muro" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/logout2.png" alt="Salir"></div>
 </header>
-<section class="muro">
+<section id="muro" class="muro">
   <article class="parrafo">
     <p>Comparte aqui todas tus ideas de covers de alguna cancion, o tus acordes. 
     Recomienda y da consejos a las personas que estan aprendiendo sobre musica.</p>
@@ -16,15 +17,10 @@ export const muroContenido = `<section class="contenedor-muro">
     <img src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/usuario.png" alt="Usuario">
     <p>Sofia Martinez</p>
   </article>
-  <input id="comentario" class="comentario" type="text" placeholder="Escribe aqui...">
+  <textarea id="comentario" class="comentario" placeholder="Escribe aqui..."></textarea>
   <span class="bPublicar"><button class="boton" id="botonPublicar">Publicar</button></span>
-  <article id="publicacion" class="publicacion">
-    <p>Me gusto la nueva cancion de Shakira</p>
-    <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
-    <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
-    <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
-  </article>
-
+  <div id="contenedor-publicacion">
+  </div>
 </section>
 </section>`;
 
@@ -41,29 +37,28 @@ export const publicar = () => {
     console.log('publico');
     const comentario = document.getElementById('comentario').value;
     console.log(comentario);
-    infComentario(comentario);
+    const fecha = new Date();
+    infComentario(comentario, fecha);
     document.getElementById('comentario').value = '';
   });
 };
-let texto = '';
-const pintar = (dato) => {
-  for (let i = 0; i < dato.lenght; i++) {
-    texto += `<article id="publicacion" class="publicacion">
-    <p>${dato[i]}</p>
-    <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
-    <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
-    <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
-    </article>`;
-  }
-};
-let publicacion = '';
+
 export const obtenerPost = async () => {
-  publicacion = document.getElementById('publicacion');
-  const snapshot = await obtenerComentario();
-  snapshot.forEach((doc) => {
-    const dato = doc.data().comentario;
-    console.log(dato);
-    pintar(dato);
-    // publicacion.innerHTML = texto;
+  const contenedor = document.getElementById('contenedor-publicacion');
+  obtenerComentario((querySnapshot) => {
+    let texto = '';
+    querySnapshot.forEach((doc) => {
+      const dato = doc.data();
+      console.log(dato);
+      texto += `<article id="publicacion" class="publicacion">
+      <div>
+      <p>${dato.comentario}</p>
+      <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
+      <img class="eliminar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
+      <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
+      </div>
+      </article>`;
+    });
+    contenedor.innerHTML = texto;
   });
 };
