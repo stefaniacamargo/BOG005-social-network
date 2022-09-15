@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { salir } from './auth.js';
 import {
-  infComentario, obtenerComentario, borrarComentario,
+  infComentario, obtenerComentario, borrarComentario, editarComentario,
 } from './firestore.js';
 
 export const muroContenido = `<section class="contenedor-muro">
@@ -57,7 +57,7 @@ export const obtenerPost = async () => {
       <p>${dato.comentario}</p>
       <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
       <img class="eliminar" data-id="${doc.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
-      <img class="modificar" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
+      <img class="modificar" data-id="${doc.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
       </div>
       </article>`;
     });
@@ -70,6 +70,15 @@ export const obtenerPost = async () => {
         if (confirmar === true) {
           borrarComentario(dataset.id);
         }
+      });
+    });
+    const btnEditar = document.querySelectorAll('.modificar');
+    btnEditar.forEach((btn) => {
+      // extraer las propiedades de un objeto
+      btn.addEventListener('click', async (e) => {
+        const dato = await editarComentario(e.target.dataset.id);
+        const editar = dato.data();
+        document.getElementById('comentario').value = editar.comentario;
       });
     });
   });

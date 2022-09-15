@@ -1,5 +1,5 @@
 import {
-  collection, addDoc, db, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc,
+  collection, addDoc, db, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
 } from './fireBaseConfi.js';
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -25,3 +25,4 @@ export const obtenerComentario = (callback) => {
 };
 
 export const borrarComentario = (id) => deleteDoc(doc(db, 'comentario', id));
+export const editarComentario = (id) => getDoc(doc(db, 'comentario', id));
