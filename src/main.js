@@ -3,7 +3,9 @@ import { resgContenido, vistaRegistro } from './lib/registro.js';
 // eslint-disable-next-line import/no-cycle
 import { iniciarContenido, vistaIniciar } from './lib/iniciarSesion.js';
 // eslint-disable-next-line import/no-cycle
-import { cerrarSesion, muroContenido, publicar, obtenerPost } from './lib/muro.js';
+import {
+  cerrarSesion, muroContenido, publicar, obtenerPost,
+} from './lib/muro.js';
 
 const linkContenido = {
   '#iniciarSesion': iniciarContenido,

@@ -28,6 +28,8 @@ export function iniciarSesion2(email, password) {
       console.log(error.message);
     });
 }
+export let user = '';
+export let userPhoto = '';
 
 export function google() {
   signInWithPopup(auth, provider)
@@ -36,8 +38,9 @@ export function google() {
       const token = credential.accessToken;
       window.location.href = '#muro';
       console.log(token);
-      const user = result.user.displayName;
-      console.log(user);
+      user = result.user.displayName;
+      userPhoto = result.user.photoURL;
+      console.log(userPhoto);
     })
     .catch((error) => {
       console.log(error.code);

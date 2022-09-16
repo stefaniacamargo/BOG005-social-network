@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { salir } from './auth.js';
+import { salir, user, userPhoto } from './auth.js';
 import {
-  infComentario, obtenerComentario, borrarComentario, editarComentario,
+  infComentario, obtenerComentario, borrarComentario, editarComentario, actualizarComentario,
 } from './firestore.js';
 
 export const muroContenido = `<section class="contenedor-muro">
@@ -26,6 +26,9 @@ export const muroContenido = `<section class="contenedor-muro">
 </section>
 </section>`;
 
+let editarEstado = false;
+let id = '';
+
 export const cerrarSesion = () => {
   const buttonCerrar = document.getElementById('cerrar');
   buttonCerrar.addEventListener('click', () => {
@@ -36,11 +39,19 @@ export const cerrarSesion = () => {
 export const publicar = () => {
   const botonPublicar = document.getElementById('botonPublicar');
   botonPublicar.addEventListener('click', () => {
-    console.log('publico');
+    botonPublicar.innerText = 'Publicar';
     const comentario = document.getElementById('comentario').value;
-    console.log(comentario);
     const fecha = new Date();
-    infComentario(comentario, fecha);
+
+    if (!editarEstado) {
+      infComentario(comentario, fecha, user, userPhoto);
+    } else {
+      actualizarComentario(id, {
+        comentario,
+      });
+      editarEstado = false;
+    }
+
     document.getElementById('comentario').value = '';
   });
 };
@@ -49,19 +60,24 @@ export const obtenerPost = async () => {
   const contenedor = document.getElementById('contenedor-publicacion');
   obtenerComentario((querySnapshot) => {
     let texto = '';
-    querySnapshot.forEach((doc) => {
-      const dato = doc.data();
-      console.log(dato);
-      texto += `<article id="publicacion" class="publicacion">
+    querySnapshot.forEach((docs) => {
+      const dato = docs.data();
+      texto += `
+      <article id="usuario" class="usuario">
+      <img src="${dato.userPhoto}">
+      <p>${dato.user}</p>
+    </article>
+      <article id="publicacion" class="publicacion">
       <div>
       <p>${dato.comentario}</p>
       <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
-      <img class="eliminar" data-id="${doc.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
-      <img class="modificar" data-id="${doc.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
+      <img class="eliminar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
+      <img class="modificar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
       </div>
       </article>`;
     });
     contenedor.innerHTML = texto;
+
     const btnEliminar = document.querySelectorAll('.eliminar');
     btnEliminar.forEach((btn) => {
       // extraer las propiedades de un objeto
@@ -72,6 +88,7 @@ export const obtenerPost = async () => {
         }
       });
     });
+
     const btnEditar = document.querySelectorAll('.modificar');
     btnEditar.forEach((btn) => {
       // extraer las propiedades de un objeto
@@ -79,6 +96,11 @@ export const obtenerPost = async () => {
         const dato = await editarComentario(e.target.dataset.id);
         const editar = dato.data();
         document.getElementById('comentario').value = editar.comentario;
+
+        editarEstado = true;
+        id = dato.id;
+
+        document.getElementById('botonPublicar').innerText = 'Actualizar';
       });
     });
   });
