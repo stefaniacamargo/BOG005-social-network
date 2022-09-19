@@ -29,8 +29,8 @@ export const provider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 
 export {
-  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
-  updateDoc,
+  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc, updateDoc,
+
 };
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,

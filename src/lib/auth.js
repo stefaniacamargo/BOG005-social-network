@@ -5,15 +5,43 @@ import {
 // eslint-disable-next-line import/no-cycle
 import { cambioRuta } from '../main.js';
 
-export function registro(email, password) {
+//updateProfile,
+
+export function registro(nombres, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
+
+
+      // updateProfile(user, {
+      //   displayName: nombres,
+      // }).then(() => {
+      //   // Profile updated!
+      //   // ...
+      // }).catch((error) => {
+      //   // An error occurred
+      //   // ...
+      // });
     })
     .catch((error) => {
-      console.log(error.message);
+      const errorCode = error.code;
+      const errorMessageJoin = document.querySelector('#errorMessageJoin');
+      switch (errorCode) {
+        case 'auth/invalid-email':
+          errorMessageJoin.innerHTML = '❌ Correo electrónico no válido';
+          break;
+        case 'auth/weak-password':
+          errorMessageJoin.innerHTML = '⚠️ La contraseña debe contener un mínimo de seis caracteres';
+          break;
+        case 'auth/email-already-in-use':
+          errorMessageJoin.innerHTML = '⚠️ Tu correo electrónico ya está registrado';
+          break;
+        default:
+          errorMessageJoin.innerHTML = '⚠️ Rellena todos los campos';
+          break;
+      }
     });
 }
 
@@ -25,7 +53,22 @@ export function iniciarSesion2(email, password) {
       console.log(user); // redireccionar a la otra pagina
     })
     .catch((error) => {
-      console.log(error.message);
+      const errorCode = error.code;
+      const errorMessage = document.querySelector('.errorMessagelogin');
+      switch (errorCode) {
+        case 'auth/invalid-email':
+          errorMessage.innerHTML = '❌Correo electrónico no válido';
+          break;
+        case 'auth/wrong-password':
+          errorMessage.innerHTML = '❌Contraseña incorrecta';
+          break;
+        case 'auth/user-not-found':
+          errorMessage.innerHTML = '⚠️ Usuario no encontrado, ¡por favor registrate!';
+          break;
+        default:
+          errorMessage.innerHTML = '⚠️ Rellena todos los campos';
+          break;
+      }
     });
 }
 export let user = '';
