@@ -14,7 +14,11 @@ export const resgContenido = `<section class="contenedor">
   <input id="correo" type="text"> <br>
   <label>Contraseña</label> <br>
   <input id="contraseña" type="password"> <br>
-  <button type="submit" id="registrate">Regístrate</button> <br>
+  <div id='modalMessage'>
+              <div id='textModal'></div>            
+          </div>
+      <div id='errorMessageJoin'></div>
+ <button type="submit" id="registrate">Regístrate</button> <br>
   </form>
   <img id="google" class="logo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/botongoogle.png" alt="continua con google">
   <p>¿Tienes una cuenta? </p>
@@ -22,14 +26,18 @@ export const resgContenido = `<section class="contenedor">
 </section>
 </section>`;
 
+// const errorMessage = document.querySelector('.errorMessagelogin');
+// errorMessage.innerHTML = '';
+
 export const vistaRegistro = () => {
   const buttonIngresar = document.getElementById('registro');
   buttonIngresar.addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('Usuario creado');
+    const nombres = document.querySelector('#nombres').value;
     const email = document.querySelector('#correo').value;
     const contraseña = document.querySelector('#contraseña').value;
-    registro(email, contraseña);
+    registro(nombres, email, contraseña);
   });
   const buttonGoogle = document.getElementById('google');
   buttonGoogle.addEventListener('click', () => {

@@ -13,6 +13,10 @@ export const iniciarContenido = `<section class="contenedor">
 <input id="loginCorreo" type="text"> <br>
 <label >Contraseña</label> <br>
 <input id="loginContraseña" type="password"> <br>
+<div id='modalMessage'>
+              <div id='textModal'></div>            
+   </div>
+   <div class='errorMessagelogin'></div>
 <button type="submit" id="iniciarSesion">Iniciar Sesión</button> <br>
 </form>
 <img id="google" class="logo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/botongoogle.png" alt="continua con google">
