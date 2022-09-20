@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { salir, user, userPhoto } from './auth.js';
+import { salir } from './auth.js';
 import {
   infComentario, obtenerComentario, borrarComentario, editarComentario, actualizarComentario,
 } from './firestore.js';
@@ -44,7 +44,7 @@ export const publicar = () => {
     const fecha = new Date();
 
     if (!editarEstado) {
-      infComentario(comentario, fecha, user, userPhoto);
+      infComentario(comentario, fecha);
     } else {
       actualizarComentario(id, {
         comentario,
@@ -82,7 +82,7 @@ export const obtenerPost = async () => {
     btnEliminar.forEach((btn) => {
       // extraer las propiedades de un objeto
       btn.addEventListener('click', ({ target: { dataset } }) => {
-        const confirmar = confirm('¿Estas seguro que deseas eliminar la publicación?');
+        const confirmar = window.confirm('¿Estas seguro que deseas eliminar la publicación?');
         if (confirmar === true) {
           borrarComentario(dataset.id);
         }

@@ -2,18 +2,14 @@ import {
   auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
 } from './fireBaseConfi.js';
-// eslint-disable-next-line import/no-cycle
-import { cambioRuta } from '../main.js';
-
-//updateProfile,
+// updateProfile,
 
 export function registro(nombres, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      window.location.href = '#muro';
+      // window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
-
 
       // updateProfile(user, {
       //   displayName: nombres,
@@ -49,7 +45,7 @@ export function iniciarSesion2(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      window.location.href = '#muro';
+      // window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
     })
     .catch((error) => {
@@ -71,19 +67,14 @@ export function iniciarSesion2(email, password) {
       }
     });
 }
-export let user = '';
-export let userPhoto = '';
 
 export function google() {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      window.location.href = '#muro';
+      // window.location.href = '#muro';
       console.log(token);
-      user = result.user.displayName;
-      userPhoto = result.user.photoURL;
-      console.log(userPhoto);
     })
     .catch((error) => {
       console.log(error.code);
@@ -96,19 +87,18 @@ export function google() {
 export function salir() {
   signOut(auth).then(() => {
     // window.location.href = '/';
-    cambioRuta('');
   }).catch((error) => {
     console.log(error.message);
   });
 }
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     const uid = user.uid;
-//     window.location.href = '#muro';
-//     console.log(uid, 'sesion iniciada');
-//   } else {
-//     console.log('sesion no iniciada');
-//     window.location.href = '#iniciarSesion';
-//   }
-// });
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const uid = user.uid;
+    window.location.href = '#muro';
+    console.log(uid, 'sesion iniciada');
+  } else {
+    console.log('sesion no iniciada');
+    window.location.href = '#iniciarSesion';
+  }
+});
