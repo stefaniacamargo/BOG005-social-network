@@ -1,8 +1,10 @@
 import {
   auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
-} from './fireBaseConfi.js';
+} from './fireBaseConfig.js';
 // updateProfile,
+
+export { getCurrentUser } from './fireBaseConfig.js';
 
 export function registro(nombres, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
@@ -41,7 +43,7 @@ export function registro(nombres, email, password) {
     });
 }
 
-export function iniciarSesion2(email, password) {
+export function iniciarSesion(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -94,9 +96,8 @@ export function salir() {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    const uid = user.uid;
     window.location.href = '#muro';
-    console.log(uid, 'sesion iniciada');
+    console.log(user, 'sesion iniciada');
   } else {
     console.log('sesion no iniciada');
     window.location.href = '#iniciarSesion';

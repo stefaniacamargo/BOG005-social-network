@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { salir } from './auth.js';
+import { salir, getCurrentUser } from './auth.js';
 import {
   infComentario, obtenerComentario, borrarComentario, editarComentario, actualizarComentario,
 } from './firestore.js';
@@ -42,9 +42,8 @@ export const publicar = () => {
     botonPublicar.innerText = 'Publicar';
     const comentario = document.getElementById('comentario').value;
     const fecha = new Date();
-
     if (!editarEstado) {
-      infComentario(comentario, fecha);
+      infComentario(comentario, fecha, getCurrentUser().displayName, getCurrentUser().photoURL);
     } else {
       actualizarComentario(id, {
         comentario,
