@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { salir, user, userPhoto } from './auth.js';
+import { salir, userName, userPhoto } from './auth.js';
 import {
   infComentario, obtenerComentario, borrarComentario, editarComentario, actualizarComentario,
 } from './firestore.js';
@@ -16,8 +16,8 @@ export const muroContenido = `<section class="contenedor-muro">
     Recomienda y da consejos a las personas que estan aprendiendo sobre musica.</p>
   </article>
   <article id="usuario" class="usuario">
-    <img src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/usuario.png" alt="Usuario">
-    <p>Sofia Martinez</p>
+    <img src="${userPhoto}" alt="Usuario">
+    <p>${userName}</p>
   </article>
   <textarea id="comentario" class="comentario" placeholder="Escribe aqui..."></textarea>
   <span class="bPublicar"><button class="boton" id="botonPublicar">Publicar</button></span>
@@ -44,7 +44,7 @@ export const publicar = () => {
     const fecha = new Date();
 
     if (!editarEstado) {
-      infComentario(comentario, fecha, user, userPhoto);
+      infComentario(comentario, fecha, userName, userPhoto);
     } else {
       actualizarComentario(id, {
         comentario,
@@ -65,7 +65,7 @@ export const obtenerPost = async () => {
       texto += `
       <article id="usuario" class="usuario">
       <img src="${dato.userPhoto}">
-      <p>${dato.user}</p>
+      <p>${dato.userName}</p>
     </article>
       <article id="publicacion" class="publicacion">
       <div>
@@ -104,4 +104,8 @@ export const obtenerPost = async () => {
       });
     });
   });
+};
+export const like = () => {
+  const buttonLike = document.querySelectorAll('corazon');
+  buttonLike.forEach()
 };

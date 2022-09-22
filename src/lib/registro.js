@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { registro, google } from './auth.js';
 
 export const resgContenido = `<section class="contenedor">
@@ -20,7 +21,7 @@ export const resgContenido = `<section class="contenedor">
       <div id='errorMessageJoin'></div>
  <button type="submit" id="registrate">Regístrate</button> <br>
   </form>
-  <img id="google" class="logo" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/botongoogle.png" alt="continua con google">
+  <img id="google" class="logo" src="https://raw.githubusercontent.com/devfd/react-native-google-signin/HEAD/img/signin-button.png" alt="continua con google">
   <p>¿Tienes una cuenta? </p>
   <p><a href="#iniciarSesion">Iniciar Sesión</a></p>
 </section>

@@ -1,11 +1,15 @@
 import {
   auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+  GoogleAuthProvider, signInWithPopup, signOut, updateProfile,
+  // onAuthStateChanged,
 } from './fireBaseConfi.js';
 // eslint-disable-next-line import/no-cycle
 import { cambioRuta } from '../main.js';
 
-//updateProfile,
+// updateProfile,
+
+export let userName = '';
+export let  userPhoto = '';
 
 export function registro(nombres, email, password) {
   createUserWithEmailAndPassword(auth, email, password)
@@ -13,17 +17,13 @@ export function registro(nombres, email, password) {
       const user = userCredential.user;
       window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
-
-
-      // updateProfile(user, {
-      //   displayName: nombres,
-      // }).then(() => {
-      //   // Profile updated!
-      //   // ...
-      // }).catch((error) => {
-      //   // An error occurred
-      //   // ...
-      // });
+      updateProfile(user, {
+        displayName: nombres,
+      }).then(() => {
+        userName = user.displayName;
+      }).catch((error) => {
+        console.log('error');
+      });
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -51,6 +51,13 @@ export function iniciarSesion2(email, password) {
       const user = userCredential.user;
       window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
+      // updateProfile(user, {
+      //   displayName: nombres,
+      // }).then(() => {
+      //   userName = user.displayName;
+      // }).catch((error) => {
+      //   console.log('error');
+      // });
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -71,8 +78,8 @@ export function iniciarSesion2(email, password) {
       }
     });
 }
-export let user = '';
-export let userPhoto = '';
+
+
 
 export function google() {
   signInWithPopup(auth, provider)
@@ -81,7 +88,7 @@ export function google() {
       const token = credential.accessToken;
       window.location.href = '#muro';
       console.log(token);
-      user = result.user.displayName;
+      userName = result.user.displayName;
       userPhoto = result.user.photoURL;
       console.log(userPhoto);
     })

@@ -3,12 +3,12 @@ import {
   updateDoc,
 } from './fireBaseConfi.js';
 
-export async function infComentario(comentario, fecha, user, userPhoto) {
+export async function infComentario(comentario, fecha, userName, userPhoto) {
   try {
     const docRef = await addDoc(collection(db, 'comentario'), {
       comentario,
       hora: Timestamp.fromDate(fecha),
-      user,
+      userName,
       userPhoto,
     });
     console.log('Document written with ID: ', docRef.id);
