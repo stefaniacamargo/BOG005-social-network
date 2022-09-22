@@ -1,4 +1,4 @@
-import { iniciarSesion2, google } from './auth.js';
+import { iniciarSesion, google } from './auth.js';
 
 export const iniciarContenido = `<section class="contenedor">
 <section class="logoInicial">
@@ -32,7 +32,7 @@ export const vistaIniciar = () => {
     console.log('Usuario correcto para ingresar');
     const email = document.querySelector('#loginCorreo').value;
     const contraseña = document.querySelector('#loginContraseña').value;
-    iniciarSesion2(email, contraseña);
+    iniciarSesion(email, contraseña);
   });
   const buttonGoogle = document.getElementById('google');
   buttonGoogle.addEventListener('click', () => {

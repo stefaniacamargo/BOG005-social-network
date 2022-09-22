@@ -1,10 +1,26 @@
 // importamos la funcion que vamos a testear
-import { auth } from '../src/lib/auth.js';
+import { cambioRuta } from '../src/main';
 
-jest.mock('../src/firebase/firebaseInit.js');
+jest.mock('../src/lib/fireBaseConfig.js');
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('Social Network', () => {
+  beforeAll(() => {
+    document.body.innerHTML = '<main id="root"></main>';
+  });
+
+  it('La pagina de registro debe mostrarse por defecto', async () => {
+    cambioRuta('');
+    const formRegistro = document.querySelector('form#registro');
+    expect(formRegistro.textContent).toContain('Nombre y Apellido');
+    expect(formRegistro.textContent).toContain('Correo electrónico');
+    expect(formRegistro.textContent).toContain('Regístrate');
+  });
+
+  it('La pagina de inicio de sesión debe mostrarse correctamente', async () => {
+    cambioRuta('#iniciarSesion');
+    const formRegistro = document.querySelector('form#ingresar');
+    expect(formRegistro.textContent).toContain('Correo electrónico');
+    expect(formRegistro.textContent).toContain('Contraseña');
+    expect(formRegistro.textContent).toContain('Iniciar Sesión');
   });
 });

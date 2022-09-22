@@ -26,9 +26,6 @@ export const resgContenido = `<section class="contenedor">
 </section>
 </section>`;
 
-// const errorMessage = document.querySelector('.errorMessagelogin');
-// errorMessage.innerHTML = '';
-
 export const vistaRegistro = () => {
   const buttonIngresar = document.getElementById('registro');
   buttonIngresar.addEventListener('submit', (e) => {

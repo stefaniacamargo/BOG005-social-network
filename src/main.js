@@ -18,9 +18,8 @@ const rutas = {
   '/': resgContenido,
   '/muro': muroContenido,
 };
-const rootInicio = document.getElementById('root');
-
 export const cambioRuta = (hash) => {
+  const rootInicio = document.getElementById('root');
   console.log(hash);
   if (hash === '') {
     rootInicio.innerHTML = linkContenido['#registrate'];
@@ -50,6 +49,7 @@ window.addEventListener('load', () => {
 });
 
 window.onpopstate = () => {
+  const rootInicio = document.getElementById('root');
   const nuevaPathname = window.location.pathname;
   rootInicio.innerHTML = rutas[nuevaPathname];
 };
