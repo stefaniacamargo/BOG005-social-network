@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { salir, userName, userPhoto } from './auth.js';
+import { salir, getCurrentUser } from './auth.js';
 import {
   infComentario, obtenerComentario, borrarComentario, editarComentario, actualizarComentario,
 } from './firestore.js';
@@ -16,8 +16,9 @@ export const muroContenido = `<section class="contenedor-muro">
     Recomienda y da consejos a las personas que estan aprendiendo sobre musica.</p>
   </article>
   <article id="usuario" class="usuario">
-    <img src="${userPhoto}" alt="Usuario">
-    <p>${userName}</p>
+    <img src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/usuario.png
+    " alt="Usuario">
+    <p>sofia </p>
   </article>
   <textarea id="comentario" class="comentario" placeholder="Escribe aqui..."></textarea>
   <span class="bPublicar"><button class="boton" id="botonPublicar">Publicar</button></span>
@@ -42,9 +43,8 @@ export const publicar = () => {
     botonPublicar.innerText = 'Publicar';
     const comentario = document.getElementById('comentario').value;
     const fecha = new Date();
-
     if (!editarEstado) {
-      infComentario(comentario, fecha, userName, userPhoto);
+      infComentario(comentario, fecha, getCurrentUser().displayName, getCurrentUser().photoURL);
     } else {
       actualizarComentario(id, {
         comentario,
@@ -65,7 +65,7 @@ export const obtenerPost = async () => {
       texto += `
       <article id="usuario" class="usuario">
       <img src="${dato.userPhoto}">
-      <p>${dato.userName}</p>
+      <p>${dato.user}</p>
     </article>
       <article id="publicacion" class="publicacion">
       <div>
@@ -82,7 +82,7 @@ export const obtenerPost = async () => {
     btnEliminar.forEach((btn) => {
       // extraer las propiedades de un objeto
       btn.addEventListener('click', ({ target: { dataset } }) => {
-        const confirmar = confirm('¿Estas seguro que deseas eliminar la publicación?');
+        const confirmar = window.confirm('¿Estas seguro que deseas eliminar la publicación?');
         if (confirmar === true) {
           borrarComentario(dataset.id);
         }
@@ -105,7 +105,7 @@ export const obtenerPost = async () => {
     });
   });
 };
-export const like = () => {
-  const buttonLike = document.querySelectorAll('corazon');
-  buttonLike.forEach()
-};
+// export const like = () => {
+//   const buttonLike = document.querySelectorAll('corazon');
+//   buttonLike.forEach()
+// };

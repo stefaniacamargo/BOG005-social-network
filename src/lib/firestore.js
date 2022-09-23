@@ -1,7 +1,7 @@
 import {
   collection, addDoc, db, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
   updateDoc,
-} from './fireBaseConfi.js';
+} from './fireBaseConfig.js';
 
 export async function infComentario(comentario, fecha, userName, userPhoto) {
   try {

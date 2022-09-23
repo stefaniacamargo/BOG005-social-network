@@ -1,27 +1,26 @@
 // importamos la funcion que vamos a testear
-import { registro } from '../src/lib/auth.js';
-// import { cambioRuta } from '../src/main.js';
-jest.mock('../src/lib/_mocks_/firebaseConfi.js');
+import { cambioRuta } from "../src/main";
 
-// describe('Cambio de ruta', () => {
-//   it('Cambio de ruta ', () => {
-//     document.body.innerHTML = '<main id="root"></main>'
-//     const resultado = cambioRuta('#registrate');
-//     expect(resultado.querySelector('#nombre').innerHTML).toBe('Nombre y Apellido');
-//   });
-// });
+jest.mock("../src/lib/fireBaseConfig.js");
 
-describe('', () => {
-  it('prueba registro incorrecto ', () => {
-    const email = 'caggmail.com';
-    const password = '12345678';
+describe("Social Network", () => {
+  beforeAll(() => {
+    document.body.innerHTML = '<main id="root"></main>';
+  });
 
-    expect.assertion(1);
-    document.body.innerHTML = '<section id="container"></section>';
-    const container = document.getElementById('container');
-    registro(email, password);
-    expect(container.textContent).toContain('❌ Correo electrónico no válido');
-    done();
+  it("La pagina de registro debe mostrarse por defecto", () => {
+    cambioRuta("");
+    const formRegistro = document.querySelector("form#registro");
+    expect(formRegistro.textContent).toContain("Nombre y Apellido");
+    expect(formRegistro.textContent).toContain("Correo electrónico");
+    expect(formRegistro.textContent).toContain("Regístrate");
+  });
+
+  it("La pagina de inicio de sesión debe mostrarse correctamente", () => {
+    cambioRuta("#iniciarSesion");
+    const formRegistro = document.querySelector("form#ingresar");
+    expect(formRegistro.textContent).toContain("Correo electrónico");
+    expect(formRegistro.textContent).toContain("Contraseña");
+    expect(formRegistro.textContent).toContain("Iniciar Sesión");
   });
 });
-

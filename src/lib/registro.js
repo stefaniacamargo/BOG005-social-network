@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { registro, google } from './auth.js';
+import { registro, google } from "./auth.js";
 
 export const resgContenido = `<section class="contenedor">
 <section class="logoInicial">
@@ -27,21 +27,53 @@ export const resgContenido = `<section class="contenedor">
 </section>
 </section>`;
 
-// const errorMessage = document.querySelector('.errorMessagelogin');
-// errorMessage.innerHTML = '';
-
 export const vistaRegistro = () => {
-  const buttonIngresar = document.getElementById('registro');
-  buttonIngresar.addEventListener('submit', (e) => {
+  const buttonIngresar = document.getElementById("registro");
+  buttonIngresar.addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log('Usuario creado');
-    const nombres = document.querySelector('#nombres').value;
-    const email = document.querySelector('#correo').value;
-    const contraseña = document.querySelector('#contraseña').value;
-    registro(nombres, email, contraseña);
+    console.log("Usuario creado");
+    const nombres = document.querySelector("#nombres").value;
+    const email = document.querySelector("#correo").value;
+    const contraseña = document.querySelector("#contraseña").value;
+    registro(email, contraseña)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        // window.location.href = '#muro';
+        console.log(user); // redireccionar a la otra pagina
+
+        // updateProfile(user, {
+        //   displayName: nombres,
+        // }).then(() => {
+        //   // Profile updated!
+        //   // ...
+        // }).catch((error) => {
+        //   // An error occurred
+        //   // ...
+        // });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessageJoin = document.querySelector("#errorMessageJoin");
+        switch (errorCode) {
+          case "auth/invalid-email":
+            errorMessageJoin.innerHTML = "❌ Correo electrónico no válido";
+            break;
+          case "auth/weak-password":
+            errorMessageJoin.innerHTML =
+              "⚠️ La contraseña debe contener un mínimo de seis caracteres";
+            break;
+          case "auth/email-already-in-use":
+            errorMessageJoin.innerHTML =
+              "⚠️ Tu correo electrónico ya está registrado";
+            break;
+          default:
+            errorMessageJoin.innerHTML = "⚠️ Rellena todos los campos";
+            break;
+        }
+      });
   });
-  const buttonGoogle = document.getElementById('google');
-  buttonGoogle.addEventListener('click', () => {
+  const buttonGoogle = document.getElementById("google");
+  buttonGoogle.addEventListener("click", () => {
     google();
   });
 };
