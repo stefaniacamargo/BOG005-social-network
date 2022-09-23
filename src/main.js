@@ -4,7 +4,7 @@ import { resgContenido, vistaRegistro } from './lib/registro.js';
 import { iniciarContenido, vistaIniciar } from './lib/iniciarSesion.js';
 // eslint-disable-next-line import/no-cycle
 import {
-  cerrarSesion, muroContenido, publicar, obtenerPost,
+  cerrarSesion, muroContenido, publicar, obtenerPost, likes,
 } from './lib/muro.js';
 
 const linkContenido = {
@@ -37,6 +37,7 @@ export const cambioRuta = (hash) => {
     cerrarSesion();
     publicar();
     obtenerPost();
+    likes();
   }
 };
 

@@ -181,8 +181,13 @@ html, body, main {
     bottom: 10px;
     position: absolute;
 }
-.corazon{
+.corazonVacio{
     left: 30px;
+  
+}
+.corazonLleno{
+    left: 30px;
+   
 }
 .eliminar{
     right: 80px;

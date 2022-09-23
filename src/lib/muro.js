@@ -8,7 +8,7 @@ export const muroContenido = `<section class="contenedor-muro">
 <header class="logoInicial-muro">
   <div><img class="logo-muro" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/Logo.png" alt="logo" /></div>
   <div><img class="titulo-muro" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/tituloprincipal.PNG" alt="music book" /></div>
-  <div><img id="cerrar" class="logout-muro" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/logout2.png" alt="Salir"></div>
+  <div><img id="cerrar" class="logout-muro" src="img/logout3.png" alt="Salir"></div>
 </header>
 <section id="muro" class="muro">
   <article class="parrafo">
@@ -70,7 +70,8 @@ export const obtenerPost = async () => {
       <article id="publicacion" class="publicacion">
       <div>
       <p>${dato.comentario}</p>
-      <img class="corazon" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/corazon.png" alt="Me gusta">
+      <img class="corazonVacio" src="img/heartvaciorelleno.png" alt="">
+      <img class="corazonRelleno" src="img/corazonVacio.png" alt="">
       <img class="eliminar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
       <img class="modificar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
       </div>
@@ -93,6 +94,7 @@ export const obtenerPost = async () => {
     btnEditar.forEach((btn) => {
       // extraer las propiedades de un objeto
       btn.addEventListener('click', async (e) => {
+        console.log('entroa edit');
         const dato = await editarComentario(e.target.dataset.id);
         const editar = dato.data();
         document.getElementById('comentario').value = editar.comentario;
@@ -103,9 +105,19 @@ export const obtenerPost = async () => {
         document.getElementById('botonPublicar').innerText = 'Actualizar';
       });
     });
+
+    const btnLike = document.querySelectorAll('.corazonVacio');
+    btnLike.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        console.log('entro en like');
+        // document.getElementsByClassName('.corazonVacio').style.display = "none";
+        // document.getElementsByClassName('corazonRelleno').style.display = "flex";
+       
+  
+      });
+    });
+
+
   });
 };
-// export const like = () => {
-//   const buttonLike = document.querySelectorAll('corazon');
-//   buttonLike.forEach()
-// };
+
