@@ -1,46 +1,64 @@
 import {
-  auth, provider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
-} from './fireBaseConfi.js';
-// eslint-disable-next-line import/no-cycle
-import { cambioRuta } from '../main.js';
+  auth,
+  provider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from "./fireBaseConfig.js";
+// updateProfile,
+
+export { getCurrentUser } from "./fireBaseConfig.js";
 
 export function registro(email, password) {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      window.location.href = '#muro';
-      console.log(user); // redireccionar a la otra pagina
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
+  const promise = createUserWithEmailAndPassword(auth, email, password);
+  return promise;
 }
 
-export function iniciarSesion2(email, password) {
+export function iniciarSesion(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      window.location.href = '#muro';
+      // window.location.href = '#muro';
       console.log(user); // redireccionar a la otra pagina
+      // updateProfile(user, {
+      //   displayName: nombres,
+      // }).then(() => {
+      //   userName = user.displayName;
+      // }).catch((error) => {
+      //   console.log('error');
+      // });
     })
     .catch((error) => {
-      console.log(error.message);
+      const errorCode = error.code;
+      const errorMessage = document.querySelector(".errorMessagelogin");
+      switch (errorCode) {
+        case "auth/invalid-email":
+          errorMessage.innerHTML = "❌Correo electrónico no válido";
+          break;
+        case "auth/wrong-password":
+          errorMessage.innerHTML = "❌Contraseña incorrecta";
+          break;
+        case "auth/user-not-found":
+          errorMessage.innerHTML =
+            "⚠️ Usuario no encontrado, ¡por favor registrate!";
+          break;
+        default:
+          errorMessage.innerHTML = "⚠️ Rellena todos los campos";
+          break;
+      }
     });
 }
-export let user = '';
-export let userPhoto = '';
 
 export function google() {
   signInWithPopup(auth, provider)
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      window.location.href = '#muro';
+      // window.location.href = '#muro';
       console.log(token);
-      user = result.user.displayName;
-      userPhoto = result.user.photoURL;
-      console.log(userPhoto);
     })
     .catch((error) => {
       console.log(error.code);
@@ -51,21 +69,21 @@ export function google() {
 }
 
 export function salir() {
-  signOut(auth).then(() => {
-    // window.location.href = '/';
-    cambioRuta('');
-  }).catch((error) => {
-    console.log(error.message);
-  });
+  signOut(auth)
+    .then(() => {
+      // window.location.href = '/';
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 }
 
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     const uid = user.uid;
-//     window.location.href = '#muro';
-//     console.log(uid, 'sesion iniciada');
-//   } else {
-//     console.log('sesion no iniciada');
-//     window.location.href = '#iniciarSesion';
-//   }
-// });
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.href = "#muro";
+    console.log(user, "sesion iniciada");
+  } else {
+    console.log("sesion no iniciada");
+    window.location.href = "#iniciarSesion";
+  }
+});

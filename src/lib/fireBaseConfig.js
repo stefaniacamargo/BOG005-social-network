@@ -2,12 +2,12 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js';
 import {
   getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, updateProfile,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 import {
   getFirestore, collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
-  updateDoc,
+  updateDoc, arrayUnion, arrayRemove,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 
@@ -24,15 +24,17 @@ const app = initializeApp(firebaseConfig);
 // console.log('app: ', app);
 export const auth = getAuth(app);
 
+export const getCurrentUser = () => getAuth().currentUser;
+
 export const provider = new GoogleAuthProvider();
 
 export const db = getFirestore(app);
 
 export {
-  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
-  updateDoc,
+  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc, updateDoc, arrayUnion, arrayRemove,
+
 };
 export {
   createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged,
+  GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, updateProfile,
 };
