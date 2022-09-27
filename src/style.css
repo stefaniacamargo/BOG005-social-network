@@ -183,11 +183,11 @@ html, body, main {
 }
 .corazonVacio{
     left: 30px;
-  
+    display:flex
 }
-.corazonLleno{
+.corazonRelleno{
     left: 30px;
-   
+    display: none
 }
 .eliminar{
     right: 80px;

@@ -35,22 +35,23 @@ export const vistaRegistro = () => {
     const nombres = document.querySelector("#nombres").value;
     const email = document.querySelector("#correo").value;
     const contraseña = document.querySelector("#contraseña").value;
-    registro(email, contraseña)
+    registro( email, contraseña)
       .then((userCredential) => {
         const user = userCredential.user;
         // window.location.href = '#muro';
         console.log(user); // redireccionar a la otra pagina
-
-        // updateProfile(user, {
-        //   displayName: nombres,
-        // }).then(() => {
-        //   // Profile updated!
-        //   // ...
-        // }).catch((error) => {
-        //   // An error occurred
-        //   // ...
-        // });
-      })
+        
+      //   updateProfile(user, {
+      //     displayName:nombres,
+      //   })
+      //   .then(() => {
+      //     // Profile updated!
+      //     console.log(user);
+      //   }).catch((error) => {
+      //     // An error occurred
+      //     // ...
+      //   });
+       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessageJoin = document.querySelector("#errorMessageJoin");

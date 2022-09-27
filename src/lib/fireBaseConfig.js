@@ -7,7 +7,7 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-auth.js';
 import {
   getFirestore, collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc,
-  updateDoc,
+  updateDoc, arrayUnion, arrayRemove,
 // eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.9.3/firebase-firestore.js';
 
@@ -31,7 +31,7 @@ export const provider = new GoogleAuthProvider();
 export const db = getFirestore(app);
 
 export {
-  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc, updateDoc,
+  collection, addDoc, onSnapshot, orderBy, Timestamp, query, deleteDoc, doc, getDoc, updateDoc, arrayUnion, arrayRemove,
 
 };
 export {
