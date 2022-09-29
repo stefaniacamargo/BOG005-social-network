@@ -32,7 +32,37 @@ export const vistaIniciar = () => {
     console.log('Usuario correcto para ingresar');
     const email = document.querySelector('#loginCorreo').value;
     const contraseña = document.querySelector('#loginContraseña').value;
-    iniciarSesion(email, contraseña);
+    iniciarSesion(email, contraseña)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        // window.location.href = '#muro';
+        console.log(user); // redireccionar a la otra pagina
+      // updateProfile(user, {
+      //   displayName: nombres,
+      // }).then(() => {
+      //   userName = user.displayName;
+      // }).catch((error) => {
+      //   console.log('error');
+      // });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = document.querySelector(".errorMessagelogin");
+        switch (errorCode) {
+          case "auth/invalid-email":
+            errorMessage.innerHTML = "❌Correo electrónico no válido";
+            break;
+          case "auth/wrong-password":
+            errorMessage.innerHTML = "❌Contraseña incorrecta";
+            break;
+          case "auth/user-not-found":
+            errorMessage.innerHTML = "⚠️ Usuario no encontrado, ¡por favor registrate!";
+            break;
+          default:
+            errorMessage.innerHTML = "⚠️ Rellena todos los campos";
+            break;
+        }
+      });
   });
   const buttonGoogle = document.getElementById('google');
   buttonGoogle.addEventListener('click', () => {

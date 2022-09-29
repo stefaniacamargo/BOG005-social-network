@@ -1,4 +1,182 @@
-# Creando una Red Social
+# MUSIC BOOK
+## Índice
+
+* [1. Resumen del proyecto](#1-resumen-del-proyecto)
+* [2. Investigación UX ](#2-investigacion-ux)
+* [3. Historias de usuario](#4-consideraciones-generales)
+* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
+* [6. Hacker edition](#6-hacker-edition)
+* [7. Entrega](#7-entrega)
+* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+
+## 1. Preámbulo
+
+Music Book es un red social dedicada a todos los amantes de la música, que quieran compartir sus experencias o acordes. Diseñado para que las personas que esten interesadas en este tema puedan socializar sus diferentes opiniones.
+
+## 2. Investigación UX
+
+Empezamos con el diseño en figma y tuvimos feedback de compañeras y familiares; los cuales nos hicieron cambiar los estilos de los botones y algunos colores.
+Despues de las recomendaciones el diseño final quedo asi;
+
+Link a[ Figma ](https://www.figma.com/file/xjUGlmXWZS2rEoRGyHsdQa/Untitled?node-id=0%3A1) 
+
+## 2. Historias de usuario
+
+### Historia 1.1
+Yo como usuario quiero crear una cuenta en la red social MUSIC BOOK por correo electrónico para poder tener acceso a la red social
+
+**Criterios de aceptación:**
+
+Se permita el acceso al usuario con correos electrónicos valido
+Que con un correo electrónico exista solo una cuenta
+La contraseña debe ser oculta cuando se escriba
+Definición de terminado:
+• Debe ser una SPA.
+• Debe ser responsive.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+• Commit en Git hub.
+
+### Historia 1.2
+
+Yo como usuario quiero crear una cuenta en la red social MUSIC BOOK por Google para poder tener acceso a la red social.
+
+**Criterios de aceptación:**
+
+Se permita el acceso al usuario con correos electrónicos valido
+Que con un correo electrónico exista solo una cuenta
+La contraseña debe ser oculta cuando se escriba
+Definición de terminado:
+• Debe ser una SPA.
+• Debe ser responsive.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+• Commit en Git hub.
+
+### Historia 2.1
+Yo como usuario quiero iniciar sesión en music book por medio del correo electrónico para poder entrar en la red social
+
+**Criterios de aceptación:**
+
+Se permita el acceso al usuario con correos electrónicos valido
+Que con un correo electrónico exista solo una cuenta
+La contraseña debe ser oculta cuando se escriba
+Definición de terminado:
+• Debe ser una SPA.
+• Debe ser responsive.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+• Commit en Git hub.
+
+
+### Historia 2.2
+Yo como usuario quiero iniciar sesión en music book por medio de Google para poder entrar en la red social
+
+**Criterios de aceptación:**
+
+Se permita el acceso al usuario con correos electrónicos valido
+Que con un correo electrónico exista solo una cuenta
+La contraseña debe ser oculta cuando se escriba
+Definición de terminado:
+• Debe ser una SPA.
+• Debe ser responsive.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+• Commit en Git hub.
+
+## Historia 3
+Yo como usuario quiero poder publicar en el muro de la red social para que otras personas lo vean
+
+-Prototipo del muro en Figma
+-Estructura en HTML con estilos
+-Que sea responsive
+
+**Criterios de aceptación:**
+
+Que el muro se pueda visualizar
+Que se pueda escribir en un input
+Que pueda por medio de un botón publicar
+
+Definición de terminado:
+• Debe ser una SPA.
+• Debe ser responsive.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+
+## Historia 4 
+Yo como usuario quiero poder borrar una publicación que hice en el muro de la red social para que otras personas no lo vean
+
+**Criterios de aceptación:**
+
+• Que el muro se pueda visualizar
+• Que se pueda seleccionar el boton para borrar la publicación
+• Que salga una alerta para asegurar que se quiere borrar la publicación
+• Que se borre la publicación
+
+**Definición de terminado:**
+• Que cumpla el funcionamiento.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+
+## Historia 5
+Yo como usuario quiero poder editar las publicaciones que ya hice para que se puedan visualizar en el muro los cambios
+
+**Criterios de aceptación:**
+
+• Que el muro se pueda visualizar
+• Que se pueda seleccionar el boton para editar
+• Que salga en el muro el texto editado
+
+**Definición de terminado:**
+• Que cumpla el funcionamiento.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Hicieron los test unitarios
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+
+## Historia 6
+Yo como usuario quiero poder dar like a las publicaciones  para que se puedan visualizar en el muro.
+
+**Criterios de aceptación:**
+
+• Que en el muro se pueda visualizar
+• Que se pueda seleccionar el boton para dar like
+• Que salga en el muro la cantidad de likes
+
+**Definición de terminado:**
+• Que cumpla el funcionamiento.
+• Deben haber recibido code review de al menos una compañera de otro equipo.
+• Testearon manualmente buscando errores e imperfecciones simples.
+• Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
+
+Link a[ Tablero de project Git hub](https://github.com/users/stefaniacamargo/projects/1/views/1?layout=table)
+
+
+
+
+
+
+
+
+
+
+![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
+
+
+
+----------------------------------------------------------------
 
 ## Índice
 
