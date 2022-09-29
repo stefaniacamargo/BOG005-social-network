@@ -24,7 +24,7 @@ export const muroContenido = `<section class="contenedor-muro">
   <article id="usuario" class="usuario">
     <img src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/usuario.png
     " alt="Usuario">
-    <p>sofia </p>
+    <p>Usuario</p>
   </article>
   <textarea id="comentario" class="comentario" placeholder="Escribe aqui..."></textarea>
   <span class="bPublicar"><button class="boton" id="botonPublicar">Publicar</button></span>
@@ -75,14 +75,14 @@ export const obtenerPost = async () => {
       const dato = docs.data();
       texto += `
       <article id="usuario" class="usuario">
-      <img src="${dato.userPhoto}">
-      <p>${dato.user}</p>
+      <p class="usuario-publicacion">${dato.user}</p>
     </article>
+      
       <article id="publicacion" class="publicacion">
       <div>
       <p>${dato.comentario}</p>
       <img class="corazonVacio" data-id="${docs.id}" src="img/heartvaciorelle.png" alt="">
-      <p>${dato.likesCounter}</p>
+      <p class="contador">${dato.likesCounter}</p>
       <img class="eliminar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/eliminar.png" alt="Eliminar">
       <img class="modificar" data-id="${docs.id}" src="https://raw.githubusercontent.com/Laura9426/BOG005-social-network/main/src/img/modificar.png" alt="Modificar">
       </div>

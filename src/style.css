@@ -112,7 +112,7 @@ html, body, main {
 }
 .usuario{
     width: 60%;
-    margin: 60px 0 0 50px;
+    margin: 60px 0 0 20px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -173,6 +173,9 @@ html, body, main {
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
 }
+.usuario-publicacion{
+   left: 50px;
+}
 .publicacion p{
     text-align: left;
 }
@@ -188,6 +191,11 @@ html, body, main {
 .corazonRelleno{
     left: 30px;
     display: none
+}
+.contador{
+    left: 70px;
+    bottom: 13px;
+    position: absolute;    
 }
 .eliminar{
     right: 80px;

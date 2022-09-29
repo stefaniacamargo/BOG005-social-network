@@ -23,4 +23,10 @@ describe("Social Network", () => {
     expect(formRegistro.textContent).toContain("Contraseña");
     expect(formRegistro.textContent).toContain("Iniciar Sesión");
   });
+  it("La pagina del muro debe mostrarse correctamente", () => {
+    cambioRuta("#muro");
+    const sectionMuro = document.querySelector("section#muro");
+    expect(sectionMuro.textContent).toContain("Escribe aqui...");
+    expect(sectionMuro.textContent).toContain("Publicar");
+  });
 });
