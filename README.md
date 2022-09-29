@@ -3,11 +3,10 @@
 
 * [1. Resumen del proyecto](#1-resumen-del-proyecto)
 * [2. Investigación UX ](#2-investigacion-ux)
-* [3. Historias de usuario](#4-consideraciones-generales)
-* [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Hacker edition](#6-hacker-edition)
-* [7. Entrega](#7-entrega)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
+* [3. Historias de usuario](#3-historias-de-usuario)
+* [5. Responsive](#5-responsive)
+
+
 
 ## 1. Preámbulo
 
@@ -109,7 +108,6 @@ Definición de terminado:
 • Debe ser una SPA.
 • Debe ser responsive.
 • Deben haber recibido code review de al menos una compañera de otro equipo.
-• Hicieron los test unitarios
 • Testearon manualmente buscando errores e imperfecciones simples.
 • Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
 
@@ -126,7 +124,6 @@ Yo como usuario quiero poder borrar una publicación que hice en el muro de la r
 **Definición de terminado:**
 • Que cumpla el funcionamiento.
 • Deben haber recibido code review de al menos una compañera de otro equipo.
-• Hicieron los test unitarios
 • Testearon manualmente buscando errores e imperfecciones simples.
 • Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
 
@@ -142,7 +139,6 @@ Yo como usuario quiero poder editar las publicaciones que ya hice para que se pu
 **Definición de terminado:**
 • Que cumpla el funcionamiento.
 • Deben haber recibido code review de al menos una compañera de otro equipo.
-• Hicieron los test unitarios
 • Testearon manualmente buscando errores e imperfecciones simples.
 • Hicieron pruebas de usabilidad e incorporaron el feedback de los usuarios como mejoras.
 
@@ -163,6 +159,22 @@ Yo como usuario quiero poder dar like a las publicaciones  para que se puedan vi
 
 Link a[ Tablero de project Git hub](https://github.com/users/stefaniacamargo/projects/1/views/1?layout=table)
 
+##Responsive
+Empezamos con un dieño de escritorio y por medio de media query fuimos adaptando a mobile.
+
+**Diseño Escritorio**
+![Escritorio 1](/src/img/escritorio1.png)
+
+![Escritorio 1](/src/img/escritorio2.png)
+
+![Escritorio 1](/src/img/escritorio3.png)
+
+
+**Diseño mobile**
+
+![Mobile 1](/src/img/mobile1.png)
+
+![Mobile 2](/src/img/mobile2.png)
 
 
 
@@ -172,7 +184,10 @@ Link a[ Tablero de project Git hub](https://github.com/users/stefaniacamargo/pro
 
 
 
-![adem-ay-Tk9m_HP4rgQ-unsplash](https://user-images.githubusercontent.com/110297/135544666-4efa54f1-4ff6-4c4c-b398-6df04ef56117.jpg)
+
+
+
+
 
 
 
