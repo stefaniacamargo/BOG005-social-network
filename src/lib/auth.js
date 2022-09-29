@@ -13,43 +13,13 @@ import {
 export { getCurrentUser } from "./fireBaseConfig.js";
 
 export function registro(email, password) {
-  const promise = createUserWithEmailAndPassword(auth, email, password);
-  return promise;
+  const promiseRegister = createUserWithEmailAndPassword(auth, email, password);
+  return promiseRegister;
 }
 
 export function iniciarSesion(email, password) {
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      // window.location.href = '#muro';
-      console.log(user); // redireccionar a la otra pagina
-      // updateProfile(user, {
-      //   displayName: nombres,
-      // }).then(() => {
-      //   userName = user.displayName;
-      // }).catch((error) => {
-      //   console.log('error');
-      // });
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = document.querySelector(".errorMessagelogin");
-      switch (errorCode) {
-        case "auth/invalid-email":
-          errorMessage.innerHTML = "❌Correo electrónico no válido";
-          break;
-        case "auth/wrong-password":
-          errorMessage.innerHTML = "❌Contraseña incorrecta";
-          break;
-        case "auth/user-not-found":
-          errorMessage.innerHTML =
-            "⚠️ Usuario no encontrado, ¡por favor registrate!";
-          break;
-        default:
-          errorMessage.innerHTML = "⚠️ Rellena todos los campos";
-          break;
-      }
-    });
+  const promiseLogin = signInWithEmailAndPassword(auth, email, password);
+  return promiseLogin;
 }
 
 export function google() {
